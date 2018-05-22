@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                sh 'echo "make build stage bbb..."' 
+                sh 'echo "make build stage bbb..."> /tmp/gittest' 
             }
         }
         stage('Test'){
             steps {
-                sh 'echo "make check, test stage ..."'
+                sh 'echo "make check, test stage ...">> /tmp/gittest'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'echo "make publish, deploy stage ..."'
+                sh 'echo "make publish, deploy stage ...">> /tmp/gittest'
             }
         }
     }
