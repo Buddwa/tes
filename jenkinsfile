@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                sh 'echo "make build stage ccc..."> /tmp/gittest' 
+                sh 'echo "make build stage ddd..."> /tmp/gittest' 
             }
         }
         stage('Test'){
