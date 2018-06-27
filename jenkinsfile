@@ -16,4 +16,5 @@ pipeline {
                 ansiblePlaybook(credentialsId: 'root', inventory: '/root/gittes/hosts', playbook: '/root/gittes/t2.yml')
             }
         }
+    }
 }
