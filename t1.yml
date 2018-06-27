@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  tasks:
+    - shell: ifconfig eth0 >/tmp/test
