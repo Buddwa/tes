@@ -6,19 +6,14 @@ pipeline {
                 ansiblePlaybook(credentialsId: 'root', inventory: '/root/gittes/hosts', playbook: '/root/gittes/mytest.yml')
             }
         }
-}
-    stages {
         stage('Test') {
             steps {
-                ansiblePlaybook(credentialsId: 'root', inventory: '/root/gittes/hosts', playbook: '/root/gittes/mytest.yml')
+                ansiblePlaybook(credentialsId: 'root', inventory: '/root/gittes/hosts', playbook: '/root/gittes/t1.yml')
             }
         }
-}
-    stages {
         stage('Deploy') {
             steps {
-                ansiblePlaybook(credentialsId: 'root', inventory: '/root/gittes/hosts', playbook: '/root/gittes/mytest.yml')
+                ansiblePlaybook(credentialsId: 'root', inventory: '/root/gittes/hosts', playbook: '/root/gittes/t2.yml')
             }
         }
-}
 }
