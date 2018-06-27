@@ -1,0 +1,23 @@
+pipeline {
+    agent none
+    stages {
+        stage('Build') {
+            agent {label "t1"}
+            steps {
+                sh 'echo "make build stage ..."> /tmp/ts1'
+            }
+        }
+        stage('Test'){
+            agent {label "t1"}
+            steps {
+                sh 'echo "make check, test stage ..."> /tmp/ts2'
+            }
+        }
+        stage('Deploy') {
+            agent {label "t2"}
+            steps {
+                sh 'echo "make publish, deploy stage ..."> /tmp/ts3'
+            }
+        }
+    }
+}

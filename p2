@@ -1,0 +1,20 @@
+pipeline { 
+    agent {label "master"}
+    stages {
+        stage('Build') { 
+            steps { 
+                sh 'echo "make build stage ggg..."> /tmp/gittest' 
+            }
+        }
+        stage('Test'){
+            steps {
+                sh 'echo "make check, test stage ...">> /tmp/gittest'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "make publish, deploy stage ...">> /tmp/gittest'
+            }
+        }
+    }
+}

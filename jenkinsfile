@@ -1,20 +1,24 @@
-pipeline { 
+pipeline {
     agent {label "master"}
     stages {
-        stage('Build') { 
-            steps { 
-                sh 'echo "make build stage ggg..."> /tmp/gittest' 
-            }
-        }
-        stage('Test'){
+        stage('Build') {
             steps {
-                sh 'echo "make check, test stage ...">> /tmp/gittest'
+                ansiblePlaybook(credentialsId: 'root', inventory: '/root/gittes/hosts', playbook: '/root/gittes/mytest.yml')
             }
         }
+}
+    stages {
+        stage('Test') {
+            steps {
+                ansiblePlaybook(credentialsId: 'root', inventory: '/root/gittes/hosts', playbook: '/root/gittes/mytest.yml')
+            }
+        }
+}
+    stages {
         stage('Deploy') {
             steps {
-                sh 'echo "make publish, deploy stage ...">> /tmp/gittest'
+                ansiblePlaybook(credentialsId: 'root', inventory: '/root/gittes/hosts', playbook: '/root/gittes/mytest.yml')
             }
         }
-    }
+}
 }
